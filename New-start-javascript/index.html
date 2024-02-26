@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="demo">logesh</h1>
+    <button onclick="loki()">try it</button>
+    <p id="demo1"></p>
+
+    <!--input number conver-->
+    <div id="wrapper">
+      <h2>cm to inches</h2>
+      <div class="inputdiv">
+        <input type="text" id="input" placeholder="length in cm">
+      </div>
+      <div>
+        <button type="submit" onclick="convert()">Convert to inches</button>
+      </div>
+      <div id="result"></div>
+    </div>
+    
+
+    <!--random number changes-->
+    <button onclick="document.getElementById('demo2').innerHTML = getRndInteger(0,10)">Click Me</button>
+    <p id="demo2"></p>
+    <!--string-->
+
+
+    <!--random name canmges-->
+    <div>
+      <h2 id="factDisplay">name changes</h2>
+      <button onclick="myFunction()">name changes</button>
+
+  
+  </div>
+
+    <!--input if else-->
+    <div id="wrapper1">
+        <h2>FD Rate Calculator</h2>
+        <div class="inputdiv">
+            <input type="text" id="input1" placeholder="tenure months">
+        </div>
+        <div>
+            <button type="submit" onclick="fdRate()">Calculate</button>
+        </div>
+        <div id="result2">
+          
+        </div>
+    </div>
+
+    <!--switch cases statr-->
+    <div id="wrapper-case">
+      <h2>Select a city</h2>
+      <div class="inputdiv">
+          <select id="inputcity">
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Mumbai">Mumbai</option>
+          </select>
+      </div>
+      <div>
+          <button id="case"  type="submit" >Show stats</button>
+      </div>
+
+
+      <!--random button click body bg color changes-->
+      <div><button style="background: red;padding: 10px 20px;color: #fff;cursor: pointer;" onclick="chnagebg()">click background </button></div>
+
+
+      <!--change background arra an for loop-->
+            <span id="color">#FFFFFF</span>
+    <div id="wrap">
+ <button id="btn">click me</button>
+        
+    </div> 
+
+
+
+    <!--clock timing-->
+<div class="clock">
+  <span id="hours">00</span>
+  <span>:</span>
+  <span id="mins">00</span>
+  <span>:</span>
+  <span id="sec">00</span>
+  <span id="am"></span>
+
+</div>
+     <!--clock timing-->
+
+
+<!--stpo and reset time-->
+     <div class="wrapper">
+      <h1>Stopwatch</h1>
+      <h2>Vanilla JavaScript Stopwatch</h2>
+      <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+      <button id="button-start">Start</button>
+      <button id="button-stop">Stop</button>
+      <button id="button-reset">Reset</button>
+      </div> 
+
+  <!--stop and reset watch-->
+  <script>
+    window.onload = function () {
+  
+  var seconds = 00; 
+  var tens = 00; 
+  var appendTens = document.getElementById("tens")
+  var appendSeconds = document.getElementById("seconds")
+  var buttonStart = document.getElementById('button-start');
+  var buttonStop = document.getElementById('button-stop');
+  var buttonReset = document.getElementById('button-reset');
+  var Interval ;
+
+  buttonStart.onclick = function() {
+    
+    clearInterval(Interval);
+     Interval = setInterval(startTimer, 10);
+  }
+  
+    buttonStop.onclick = function() {
+       clearInterval(Interval);
+  }
+  
+
+  buttonReset.onclick = function() {
+     clearInterval(Interval);
+    tens = "00";
+  	seconds = "00";
+    appendTens.innerHTML = tens;
+  	appendSeconds.innerHTML = seconds;
+  }
+  
+   
+  
+  function startTimer () {
+    tens++; 
+    
+    if(tens <= 9){
+      appendTens.innerHTML = "0" + tens;
+    }
+    
+    if (tens > 9){
+      appendTens.innerHTML =  tens;
+      
+    } 
+    
+    if (tens > 99) {
+      //console.log("seconds");
+      seconds++;
+      appendSeconds.innerHTML = "0" + seconds;
+      tens = 0;
+      appendTens.innerHTML = "0" + 0;
+    }
+    
+    if (seconds > 9){
+      appendSeconds.innerHTML = seconds;
+    }
+  
+  }
+  
+
+}
+  </script>
+
+    <!--arry values insert in drop downs-->
+    <select id="mySelect">
+      <option value="Audi">Audi</option>
+      
+    </select>
+  </body>
+
+  <!--clock timing-->
+  <script>
+    var ampm = document.getElementById("am");
+function datatime(){
+  var currentdate = new Date();
+  var hourss = changenumber(currentdate.getHours()) ;
+  var mins = changenumber(currentdate.getMinutes()) ;
+  var secondds = changenumber(currentdate.getSeconds()) ;
+  document.getElementById("hours").innerHTML = hourss
+
+  if(hourss>12){
+    hourss = hourss - 12;
+    ampm.innerHTML = "PM";
+  }
+  ampm.innerHTML = "AM";
+  document.getElementById("mins").innerHTML = mins
+  document.getElementById("sec").innerHTML = secondds
+}
+
+function changenumber(num){
+  return num<10? "0"+num:num
+}
+setInterval(datatime, 4000)
+  </script>
+
+  <!--switch case citys-->
+  <script>
+
+//var btn = document.getElementById("case");
+//btn.addEventListener('click', displayStats);
+function displaystate(){
+var inputval = document.getElementById("inputcity");
+var getvalus = input.options[index.selectedIndex].value;
+var population = 0, literacyRate = 0, language = '';
+
+
+switch(getvalus){
+  case 'Bengaluru':
+  population = 8443675
+  literacyRate = 88.71
+  language = 'Kannada'
+  break 
+  case   'Chennai':
+  population = 4646732
+           literacyRate = 90.20
+           language = 'Tamil'
+}
+var msg  = `The Indian city of ${getvalus} has a population of ${population}. Language spoken is ${language} and literacy rate is ${literacyRate}%.`
+
+var resultdiv = document.createElement("div");
+resultdiv.id = 'output';
+document.getElementById("wrapper-case").appendChild(resultdiv);
+document.getElementById('output').innerHTML = msg;
+
+}
+/*
+'Chennai': population = 4646732
+           literacyRate = 90.20
+           language = 'Tamil'
+'Bengaluru':population = 8443675
+            literacyRate = 88.71
+            language = 'Kannada'
+'Mumbai':population = 12442373
+        literacyRate = 89.73
+        language = 'Marathi'
+'Delhi': population = 16787941
+         literacyRate = 86.20
+         language = 'Hindi'
+The Indian city of Bengaluru has a population of 8443675. Language spoken is Kannada and literacy rate is 88.71%.
+*/
+
+
+  </script>
+
+  <script>
+
+    //if else
+    function fdRate(){
+        const months = Number(document.getElementById("input").value)
+        let rate = 0
+        //else if ladder
+        // <3 months - 5.8% 
+        // 3 - 6 months - 6.5%
+        // 7 - 9 months - 6.8% 
+        // >=10 months - 7%
+
+        if(months<3)
+            rate = 5.8
+        else if(months>=3 && months<=6)
+            rate = 6.5
+        else if(months>=7 && months<=9)
+            rate = 6.8
+        else
+            rate = 7
+        
+        let result = document.querySelector('#result2')
+        result.innerHTML = "Your interest rate is " + rate + "%"
+      }
+
+
+    //promot
+    function loki() {
+      var name = prompt("pleas enter your name");
+      document.getElementById("demo").innerHTML = name;
+    };
+  </script>
+
+
+<!--test convension-->
+
+
+
+  <!--lenth conversions-->
+  <script>
+    function convert() {
+      var getval = Number(document.getElementById("input").value);
+      var cm = getval / 2;
+      var result = document.getElementById("result");
+      result.innerHTML = cm.toFixed(2) + "inches";
+    }
+  </script>
+
+
+
+  <!--random values-->
+  <script>
+    function getRndInteger(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+  </script>
+
+
+  <!--string-->
+  <script>
+    (function myFunction() {
+      var n1 = ["logesh", "kumar", "arun", "balaji"];
+      var n2 = Math.floor(Math.random() * n1.length);
+      document.getElementById("factDisplay").innerHTML = n1[n2];
+    })();
+    
+    //spread operators
+    var sp1 = ["saravana"]
+    var sp2 = ["ajith"]
+    var all = sp1.concat (sp2);
+
+
+
+//for loop
+
+for(var i = 0;i < 11;i++){
+  if(i % 2 != 1){
+    console.log("tottal oun is " + i);
+  }
+  
+}
+
+//while loop
+/*while(true){
+  var num = Number(prompt("enter youe number"));
+if(!isNaN(num))
+break;
+}*/
+
+//how to get array values in for loop
+
+var arr = ["logesh", "rakesh", "magesh", "ashwin"];
+for(i = 0;i<arr.length;i++){
+  console.log(arr[i]);
+}
+
+
+
+//button click random color cangs in background
+function chnagebg(){
+  var red = Math.floor(Math.random() * 256);
+  var green = Math.floor(Math.random() * 256);
+  var blue = Math.floor(Math.random() * 256);
+
+  document.body.style.background = "rgb(" + red + ", " + green + ", " + blue + ")";
+  
+}
+
+
+
+///change backgound arrys and for loops 
+
+const btn = document.getElementById("btn")//btn
+const colortext = document.getElementById("color")//get color code
+const wrap =  document.getElementById("wrap")//set css in background 
+const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']//decimal ti bianry
+
+btn.addEventListener('click',function(){
+    let hexColor = '#'
+    for(let i=1;i<=6;i++){
+        hexColor += randHexValue()
+    }
+    wrap.style.backgroundColor = hexColor
+    colortext.innerHTML = hexColor
+})
+
+function randHexValue(){
+   let randomIndex = Math.floor(Math.random()*16)
+   return hex[randomIndex]
+}	
+
+
+//map set
+var arr1 = [1, 2, 3, 4, 5, 6, 6, 6, 6, 7];
+var arresult = new Set(arr1);
+console.log(arr1);
+console.log(arresult);
+ 
+//add
+var arr2 = new Set();
+arr2.add(2);
+arr2.add(4);
+arr2.add(6);
+console.log(arr2);
+
+//size
+var size1 = new Map ([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+  ]);
+
+console.log(size1.size);
+
+
+//hash and typeoff
+
+var hash2 = new Map([
+["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+console.log(hash2.has("logesh"));
+console.log(typeof hash2);
+
+
+//for loop
+for(var i = 0;i < 10;i++){
+  if(i % 2 == 1){
+console.log(i);
+  }
+}
+
+//for in objects
+var forin1 = {
+  name: "loki",
+  age: "23"
+};
+
+for(var key in forin1){
+  console.log(key + " : ", forin1[key]);
+}
+
+//for in arrys
+var forarr = ["red", "blue", "green"];
+for(var key in forarr){
+  console.log(forarr[key]);
+}
+
+
+//for of arrays
+
+var foroff = ["red", "blue", "green"];
+for(var foroff of foroff){
+  console.log("coclor is: " + " " + foroff);  
+}
+
+
+//for loop number get and addinfg
+
+var numbers = [1, 2, 3, 4, 5, 6], target = 3;
+
+var sum = function(numbers, target){
+var map = new Map();
+for(var i = 0;i<numbers.length;i++){
+  var complement = target -  numbers[i];
+  if(map.has(complement));
+  return[map.get(complement), i];
+  map.set(numbers[i], i);
+}
+}
+
+console.log(numbers);
+
+
+
+
+setTimeout(()=>console.log("set"), 3000)
+  </script>
+</html>

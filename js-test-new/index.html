@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <!--lent convetrt-->
+    <div id="wrapper1">
+        <h2>cm to inches</h2>
+        <div class="inputdiv">
+            <input type="text" id="input1" placeholder="length in cm">
+        </div>
+        <div>
+            <button type="submit" onclick="convert()">Convert to inches</button>
+        </div>
+        <div id="result1"></div>
+    </div>
+    <script>
+     //lent conveter
+     function convert(){
+     var input1 = Number(document.getElementById('input1').value);
+     var convert = input1 / 2;
+     document.getElementById('result1').innerHTML = convert;
+    }
+
+    </script>
+
+
+<!--button click random name changes -->
+<button onclick="randomchanesg()">name</button>
+<p id="demo1"></p>
+<script>
+//random name cnages
+var ar1 = ["balaji", "chandru", "saravanan", "logesgh"];
+ function randomchanesg(){
+var namediv = document.getElementById('demo1');
+namediv.innerHTML = ar1[Math.floor(Math.random() * ar1.length)]
+}
+</script>
+    
+
+
+<!--fd rates-->
+<div id="wrapper">
+    <h2>FD Rate Calculator</h2>
+    <div class="inputdiv">
+        <input type="text" id="input" placeholder="tenure months">
+    </div>
+    <div>
+        <button type="submit" onclick="fdRate()">Calculate</button>
+    </div>
+    <div id="result">
+
+    </div>
+</div>
+<script>
+    function fdRate(){
+      const months = Number(document.getElementById("input").value)
+      let rate = 0
+      //else if ladder
+      // <3 months - 5.8% 
+      // 3 - 6 months - 6.5%
+      // 7 - 9 months - 6.8% 
+      // >=10 months - 7%
+      if(months<3)
+          rate = 5.8
+      else if(months>=3 && months<=6)
+          rate = 6.5
+      else if(months>=7 && months<=9)
+          rate = 6.8
+      else
+          rate = 7
+      
+      let result = document.querySelector('#result')
+      result.innerHTML = "Your interest rate is " + rate + "%"
+    }
+  </script>
+
+
+
+<!-- 
+<div id="wrapper3">
+    <h2>Select a city</h2>
+    <div class="inputdiv">
+        <select id="inputselect">
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+        </select>
+    </div>
+    <div>
+       <span class="example">click me</span>
+    </div>
+
+    <script>
+
+      var button =   document.querySelector(".example");
+      button.addEventListener('click', displaydtate);
+
+      function displaydtate(){
+        var inputdiv = document.getElementById('inputselect');
+        var citys = inputdiv.option[inputdiv.selectedIndex].value;
+        let population = 0, literacyRate = 0, language =''
+
+        switch(citys){
+            case 'Bengaluru':
+            population = 8443675
+            literacyRate = 88.71
+            language = 'Kannada'
+            break
+            case 'Chennai':
+            population = 4646732
+            literacyRate = 90.20
+            language = 'Tamil'
+            break
+        case 'Mumbai':
+            population = 12442373
+            literacyRate = 89.73
+            language = 'Marathi'
+            break
+        case 'Delhi':
+            population = 16787941
+            literacyRate = 86.20
+            language = 'Hindi'
+            break
+        }
+
+        var text = `The Indian city of ${citys} the literacyRate is ${literacyRate} and  populatopns ${population} `;
+        var create = document.createElement('div');
+      }
+
+
+    </script>-->
+
+    <!--colour fliper-->
+    <div id="heading">Color Flipper
+        <span id="color">#FFFFFF</span>
+    </div>
+    
+    <div id="wrap">
+        <div id="container">
+            <button id="btn">click me</button>
+        </div>
+    </div>
+    <script>
+   
+
+        const btn = document.getElementById("btn")
+const colortext = document.getElementById("color")
+const wrap =  document.getElementById("wrap")
+const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
+
+btn.addEventListener('click',function(){
+    let hexColor = '#'
+    for(let i=1;i<=6;i++){
+        hexColor += randHexValue()
+    }
+    wrap.style.backgroundColor = hexColor
+    colortext.innerHTML = hexColor
+})
+
+function randHexValue(){
+   let randomIndex = Math.floor(Math.random()*16)
+   return hex[randomIndex]
+}
+
+
+
+    </script>
+
+    <!--digital clock-->
+    <div id="wrapper-time">
+        <span id="hours">00</span>
+        <span>:</span>
+        <span id="mins">00</span>
+        <span>:</span>
+        <span id="seconds">00</span>
+        <span id="ampm">AM</span>
+     </div>
+
+     <script>
+    let ampm = document.getElementById('ampm');
+    function displaytime (){
+        var realtime = new Date();
+        var hours = realtime.getHours();
+        var mins = pad(realtime.getMinutes()) ;
+        var seconds = pad(realtime.getSeconds());
+        document.getElementById('hours').innerHTML = pad(hours)
+        document.getElementById('mins').innerHTML = mins
+        document.getElementById('seconds').innerHTML = seconds   
+
+       function pad (num){
+        return num>10? "0" + num:num
+       }
+    }
+    setInterval(displaytime, 500)
+  
+     </script>
+
+
+
+
+<!--currency converter-->
+
+<h1>Currency Convertor</h1>
+<div class="box">
+    <div class="left-box">
+        <select name="currency" class="currency">
+           
+        </select>
+        <input type="number" name="" id="inputselectall">
+    </div>
+    <div class="right-box">
+        <select name="currency" class="currency"></select>
+        <input type="number" name="" id="result4">
+    </div>
+</div>
+<div class="btn">
+    <button id="btn2">Convert</button>
+</div>
+
+
+<script>
+var btn1 = document.getElementById('btn2')
+var inpitval = document.getElementById('inputselectall')
+var selected = document.querySelectorAll(".currency");
+    fetch('https://api.frankfurter.app/currencies')
+    .then(res=> res.json())
+    .then(res=> Displaydropdown(res))
+
+    function Displaydropdown(res){
+       //console.log(Object.entries(res));
+
+       var currency = Object.entries(res);
+       for(var i = 0;i<currency.length;i++){
+        var opt = ` <option value="${currency[i][0]}">${currency[i][0]}</option>`
+        selected[0].innerHTML += opt
+        selected[1].innerHTML += opt
+    
+       }
+    }
+
+
+    //btn set
+
+    btn1.addEventListener('click', function(){
+        var curr1 = selected[0].value
+        var curr2 = selected[1].value
+        var inputVal = inputselectall.value
+
+        if(curr1 === curr2)
+            alert("pleas maka a coise")
+    
+        else
+        convert(curr1,curr2,inputVal);
+    })
+
+    
+function convert(curr1,curr2,inputVal){
+  const host = 'api.frankfurter.app';
+  fetch(`https://${host}/latest?amount=${inputVal}&from=${curr1}&to=${curr2}`)
+  .then(resp => resp.json())
+  .then((data) => {
+    document.getElementById('result4').value = Object.values(data.rates)[0]
+  });
+
+}
+
+    
+</script>
+
+
+<!--memeor games-->
+<h3>Memory Game</h3>
+<div id="gameBoard" class="game">
+  
+</div>
+<script>
+const cardsArray = [
+    {
+        name:'dog',
+        icon:'<i class="fa-solid fa-dog"></i>'
+    },
+    {
+        name:'hippo',
+        icon:'<i class="fa-solid fa-hippo"></i>'
+    },
+    {
+        name:'fish',
+        icon:'<i class="fa-solid fa-fish"></i>'
+    },
+    {
+        name:'cat',
+        icon:'<i class="fa-solid fa-cat"></i>'
+    },
+    {
+        name:'spider',
+        icon:'<i class="fa-solid fa-spider"></i>'
+    },
+    {
+        name:'frog',
+        icon:'<i class="fa-solid fa-frog"></i>'
+    },
+    {
+        name:'dog',
+        icon:'<i class="fa-solid fa-dog"></i>'
+    },
+    {
+        name:'hippo',
+        icon:'<i class="fa-solid fa-hippo"></i>'
+    },
+    {
+        name:'fish',
+        icon:'<i class="fa-solid fa-fish"></i>'
+    },
+    {
+        name:'cat',
+        icon:'<i class="fa-solid fa-cat"></i>'
+    },
+    {
+        name:'spider',
+        icon:'<i class="fa-solid fa-spider"></i>'
+    },
+    {
+        name:'frog',
+        icon:'<i class="fa-solid fa-frog"></i>'
+    }
+];
+
+shuffleCards();
+displayCards();
+var gameBoard = document.getElementById('gameBoard');
+flippedCards = [];
+var matchedPairs  = 0;
+function shuffleCards(){
+    for(let i=cardsArray.length-1;i>=0;i--){
+        const randIndex = Math.floor(Math.random()*(i+1));
+        [cardsArray[i],cardsArray[randIndex]] = [cardsArray[randIndex],cardsArray[i]]
+    }
+}
+
+function displayCards(){
+    cardsArray.forEach((curr,index,arr)=>{
+        const card = document.createElement('div');
+        card.setAttribute('id',index);
+        card.classList.add('cardback');
+        card.classList.add('active');
+        gameBoard.append(card); 
+        card.addEventListener('click',flipCard);
+    })
+}
+
+function flipCard(){
+    if(flippedCards.length<2){
+    var cardId = this.getAttribute('id');
+    this.classList.remove('cardback');
+    this.innerHTML = cardsArray[cardId].icon;
+    flippedCards.push(this);
+
+    if(flippedCards.length == 2){
+        checkMatch();
+    }
+    }
+}
+
+ //checkMatch
+
+ function checkMatch(){
+    var card1id = flippedCards[0].getAttribute('id');
+    var card2id = flippedCards[1].getAttribute('id');
+    if(cardsArray[card1id].name === cardsArray[card2id].name){
+        flippedCards[0].style.border = 'none';
+        flippedCards[0].style.backgroundColor = '#f5e8ba';
+        flippedCards[0].innerHTML = '';
+        flippedCards[1].style.border = 'none';
+        flippedCards[1].style.backgroundColor = '#f5e8ba';
+        flippedCards[1].innerHTML = '';
+        flippedCards[0].classList.remove('active');
+        flippedCards[1].classList.remove('active');
+        matchedPairs++;
+        checkGameOver();
+    }
+
+    else{
+        flippedCards[0].innerHTML = '';
+        flippedCards[0].classList.add('cardback');
+        flippedCards[1].innerHTML = '';
+        flippedCards[1].classList.add('cardback');
+    }
+
+    flippedCards = [];
+ }
+
+
+ function checkGameOver(){
+    if(matchedPairs == cardsArray.length/2){
+        
+        while(gameBoard.firstChild){
+            gameBoard.removeChild(gameBoard.firstChild)
+        }
+
+        gameBoard.innerHTML = "you win";
+        gameBoard.classList.remove('game');
+        gameBoard.classList.add('won');
+    }
+ }
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

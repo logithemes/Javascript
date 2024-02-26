@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<p id="demo"></p>
+<h4 id="demo1"></h4>
+<h3 id="demo2"></h3>
+<button onclick="document.getElementById('demo').innerHTML = getRndInteger(1,10)">click</button>
+<script>
+
+
+//spread operators
+const myObject = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+document.getElementById("demo2").innerHTML 
+
+    //if else
+    var hour = new Date().getHours();
+    let greeting;
+    if(hour > 18){
+        greeting = "Good day";
+    }
+    else{
+        greeting = "Good evening";
+    };
+    document.getElementById("demo1").innerHTML = greeting;
+    //button click
+    function getRndInteger(min, max){
+        return Math.floor(Math.random() * (max - min + 1) ) + min;
+    }
+  
+
+    //for in
+    var person = {
+        name: "logesh",
+        age: "22"
+    };
+
+   for(let key in person){
+    console.log(key + " : ", person[key]);
+   }
+</script>
+
+</body>
+</html>

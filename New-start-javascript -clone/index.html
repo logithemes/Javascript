@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <body>
+
+  
+   <!--input click number convet-->
+    <div class="wraper">
+      <input id="input" type="text" placeholder="plewas enter your Number">
+      <button type="submit" onclick="convert()">convert number</button>
+      <span id="result"></span>
+    </div>
+
+    <!--button  click random vlues-->
+    <div class="wraper1">
+      <button onclick="document.getElementById('demo1').innerHTML = getRndInteger(0,10)">Click Me</button>
+      <span id="demo1"></span>
+    </div>
+
+<!--button  click random names changes-->
+    <button onclick="namechanges()">your random names</button>
+    <span id="demo3"></span>
+
+
+    <!--if else fd rate-->
+    <div class="wraper2">
+      <input id="input1" type="text" placeholder="text">
+      <button onclick="fdrate()">fd rate</button>
+      <span id="result1">result</span>
+    </div>
+
+    <!--
+      
+    <div id="wrapper">
+      <h2>Select a city</h2>
+      <div class="inputdiv">
+          <select id="inputstate">
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Mumbai">Mumbai</option>
+          </select>
+      </div>
+      <div>
+          <button class="btn" type="submit" >Show stats</button>
+      </div>
+  </div>-->
+
+     <!--random button click body bg color changes-->
+     <div><button onclick="chnagebg()">click background </button></div>
+
+     <!--currency convetre-->
+     <h1>Currency Convertor</h1>
+        <div class="box">
+            <div class="left-box">
+                <select name="currency" class="currency">
+                   
+                </select>
+                <input type="number" name="" id="currencyinput">
+            </div>
+            <div class="right-box">
+                <select name="currency" class="currency"></select>
+                <input type="number" name="" id="result">
+            </div>
+        </div>
+        <div class="btn">
+            <button id="currencybtn">Convert</button>
+        </div>
+
+        <!--currency conveter end-->
+
+
+     <!--clock-->
+     <div id="wrapper">
+      <span id="hours">00</span>
+      <span>:</span>
+      <span id="mins">00</span>
+      <span>:</span>
+      <span id="seconds">00</span>
+      <span id="ampm">AM</span>
+   </div>
+
+   <!--to do list-->
+   <div id="wrapper">
+    <h2>Todo List</h2>
+    <input type="text" id="input10">
+    <button id="adding1">Add</button>
+    <div id="todoList">
+        
+    </div>
+</div>
+
+
+  <body>
+
+    
+
+    <!--to do list-->
+    <script>
+      var inputvalarr = document.getElementById("input10")
+      var buttonadding = document.getElementById("adding1")
+      var todoList = document.getElementById("todoList")
+
+      var emtyarray = [];
+      buttonadding.addEventListener("click", ()=>{
+        emtyarray.push(inputvalarr.value);
+        addtodo(inputvalarr.value);
+        inputvalarr.value = "";
+      });
+
+      function addtodo (todoval){
+        var para = document.createElement('p');
+        para.innerHTML = todoval;
+        todoList.appendChild(para);
+        para.addEventListener("click", ()=>{
+          $(this).hide;
+        })
+
+      }
+
+    </script>
+
+    <!--currency converted
+    <script>
+      var selected = document.querySelectorAll("currency");
+      var currencybtn = document.getElementById("currencybtn");
+      var currencyinput = document.getElementById("currencyinput");
+      fetch('https://api.frankfurter.app/currencies');//get all values in link
+      then(res => res.json());//change json files
+      then(res => dropdown(res));//convert to funcrtion and var name
+      function dropdown (res){
+        var currency = Object.entries(res);//changr to arrays
+        for(var i = 0;i<currency.length;i++){
+          var opi = ` <option value="${currency[i][0]}">${currency[i][0]}</option>`
+          selected[0].innerHTML += opi
+          selected[1].innerHTML += opi
+        }
+      }
+
+  btn.addEventListener('click',()=>{
+  let curr1 = select[0].value
+  let curr2 = select[1].value
+  let inputVal = input.value
+  if(curr1===curr2)
+    alert("Choose different currencies")
+  else
+    convert(curr1,curr2,inputVal)
+});
+
+function convert(curr1,curr2,inputVal){
+  const host = 'api.frankfurter.app';
+  fetch(`https://${host}/latest?amount=${inputVal}&from=${curr1}&to=${curr2}`)
+  .then(resp => resp.json())
+  .then((data) => {
+    document.getElementById('result').value = Object.values(data.rates)[0]
+  });
+
+}
+      
+
+      
+      
+    </script>-->
+    <!--clock scripy-->
+    <script>
+     let ampm = document.getElementById('ampm')
+function displayTime(){
+    let dateTime = new Date();
+    let hr = dateTime.getHours();
+    let min = padZero(dateTime.getMinutes());
+    let sec = padZero(dateTime.getSeconds());
+    if(hr>12){
+        hr = hr - 12
+        ampm.innerHTML = 'PM'
+    }
+       
+    document.getElementById('hours').innerHTML = padZero(hr)
+    document.getElementById('mins').innerHTML = min
+    document.getElementById('seconds').innerHTML = sec
+}
+
+function padZero(num){
+    return num<10?"0"+num:num
+}
+
+setInterval(displayTime,500)
+    </script>
+
+    <!--change background-->    
+    <script>
+      function chnagebg(){
+        var red = Math.floor(Math.random() * 256);
+        var blue = Math.floor(Math.random() * 256);
+        var green = Math.floor(Math.random() * 256);
+        var yellow = Math.floor(Math.random() * 256);
+        document.body.style.background = "rgb(" + red + ", " + green + ", " + blue + ", " + yellow +")";
+      }
+
+      
+
+    </script>
+    <!--
+    <script>
+
+      var btn  = document.querySelector(".btn");
+      btn.addEventListener("click", display);
+      function display(){
+        var inputstate = document.getElementById("inputstate")
+        var selectcity = inputstate.option[inputstate.selectedIndex].value;
+        let population = 0, literacyRate = 0, language =''
+       var citydetails = `The Indian city of ${selectcity} has a population of ${population}. Language spoken is Kannada and literacy rate is 88.71%.`
+       switch(selectcity){
+        case "Chennai":
+        population = 4646732
+           literacyRate = 90.20
+           language = 'Tamil'
+           break
+
+           case 'Bengaluru':population = 8443675
+            literacyRate = 88.71
+            language = 'Kannada'
+            break
+            
+            case 'Delhi': population = 16787941
+         literacyRate = 86.20
+         language = 'Hindi'
+       }
+      }
+    </script>-->
+
+    <!--if else fd ratre-->
+    <script>
+      function fdrate(){ 
+      var getinput = Number( document.getElementById("input1").value)
+      var rate  = 0;
+      //<3 month 5.8
+      //3-6  month 6.5
+      //<7 - 9 month 6.8
+      //> 10 month  - 7%
+
+      if(getinput<3)
+      rate  = 5.8
+    else if(getinput>= 3 && getinput<=6)
+    rate  = 6.5
+
+    else if(getinput>= 7 && getinput<=9)
+    rate  = 6.8
+
+    else rate = 7;
+
+        var output = document.querySelector("#result1");
+        output.innerHTML = "your intrested " + rate + "%";
+      
+    }
+    </script>
+    
+
+<!--random number changes-->
+<script>
+  function getRndInteger(min, max){
+return Math.floor(Math.random() * (min - max)) + max
+  }
+
+  //click name random changes
+
+  var randomname = ["arun", "logesh", "rakesh", "magesh", "vijay", "saravana", "prasanth"];
+  namediv = document.getElementById("demo3");
+ window.onload = function  namechanges(){
+  namediv.innerHTML = randomname[Math.floor(Math.random() * randomname.length)]
+}
+
+
+
+</script>
+    
+<!--input random mumber-->
+    <script>
+   
+   function convert(){
+    var getinputval = Number(document.getElementById("input").value);
+    var twointgrer = getinputval / 2;
+    var outputinput = document.getElementById("result");
+    result.innerHTML = twointgrer;
+
+   }
+    </script>
+
+
+
+
+<!--call back functio-->
+<script>
+
+//old style function
+function normal(a, b){
+  return a * b;
+}
+console.log(normal(5, 4));
+
+//arrow functions
+var arrow = (a, b) => (a / b)
+console.log(arrow(10, 2));
+
+//call back arrow and normal
+var obj = [
+  {movie: "pulp fiction", date: "1997"},
+  {movie: "death proff", date: "2000"}
+];
+var ou1 = obj.find((value) =>  obj.values)
+
+console.log(ou1);
+</script>
+
+
+<!--function decelertion and expresion-->
+<script>
+  //Develertions start
+  var dec1 = 50;
+  var dec2 = 100;
+
+  /*function addno (){
+  var adding = dec1 + dec2;
+  console.log(adding);
+  }*/
+  //Develertions end
+
+
+  //expressio start
+  var addno = function addno (){
+  var adding = dec1 + dec2;
+  console.log(adding);
+  }
+  //expressio end
+  addno();
+
+
+  //what is javascripts hostion 
+
+  //decelreations
+  adddecelertions();//waht ever ypu can write a log in decelertion show theanswer
+  function adddecelertions(){
+    console.log("this is a decelreations in javascript hostion");
+  };
+
+  //expression
+
+var addexpression = function(){
+  console.log("this is a expression in javascript hostion");
+};
+
+addexpression();
+
+
+//resr operotors
+function rest(...getitems){
+ return getitems.reduce(function(a, b){
+return a + b;
+//console.log(getitems);
+ })
+};
+
+var restout = rest(10, 10, 30, 50);
+console.log(restout);
+</script>
+
+<!--set and map-->
+<script>
+  var setarrya = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  var setarrya1 = new Set(setarrya);
+  console.log(setarrya);
+  console.log(setarrya1);
+
+  //map get values and set
+  var arrayget = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200],
+
+  ]);
+
+  
+  console.log(arrayget.get("apples"));
+
+  //delete
+  var arrayget = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200],
+
+  ]);
+
+console.log(arrayget.delete("bananas"));
+
+//Precedence  opertores
+var xx  = (2 + 5) * 10;
+</script>
+
+
+
+<!--Promise | Async JavaScript-->
+<script>
+  function booking(){
+    return  new Promise(function(yes, no){
+    var done = true;
+    if(done){
+      yes(300)
+    }
+    else{
+      no()
+    }
+  });
+  }
+  booking().then((amt)=>console.log(`booking done ${amt}`))
+  .catch(()=>console.log("no booking"));
+</script>
+
+
+<!--Error Handling - Try, Catch and Throw -->
+<script>
+  try {
+
+    var number1 = prompt();
+    console.log(number1);
+    if(number1=== '')
+    throw "is emty"
+    if(isNaN(number1)){
+      throw "enter youe number"
+    }
+
+    
+  } catch (error) {
+    console.log(error);
+  }
+
+  var data1 = "loki";
+  console.log(data1);
+
+</script>
+
+<!--JSON - JavaScript Object Notation-->
+
+<p id="demo9"></p>
+<p id="demo10"></p>
+<script>
+const obj5 = {name: "John", age: 30, city: "New York"};
+const myJSON = JSON.stringify(obj5);
+document.getElementById("demo9").innerHTML = myJSON;
+
+/*var json6 = `[
+  {"stock" : "tcs", "price" : 3500},
+  {"stock" : "vibro", "price" : 1500},
+  {"stock" : "hcl", "price" : 2500},
+
+]`;
+var outjs = JSON.parse(json6)
+console.log(outjs);*/
+
+//try and catc
+/*try {
+
+  num = prompt(4);
+  if((num < 3));
+  throw(false)
+  
+} catch (error) {
+  console.log(error);
+}*/
+
+
+//json values
+//json objects
+var js1 = '{"name":"John", "age":30, "city":"New York"}';
+var js2 = JSON.parse(js1);
+console.log(js2.age + "your age");
+
+
+//json arrays
+var jsar1 = '[ "Ford", "BMW", "Audi", "Fiat" ]';
+var jsar2 = JSON.parse(jsar1);
+jsar2[0] = "data"
+console.log(jsar2[0]);
+</script>
+
+
+<!--xml files transfer in javascript-->
+<script>
+   var xmlfile = new XMLHttpRequest();
+   xmlfile.open("GET", 'https://reqres.in/api/users?page=2', true);
+   xmlfile.send();
+   xmlfile.onload = function(){
+  var obj2 = JSON.parse(xmlfile.responseText);
+    var sowall = document.getElementById("showall").innerHTML= obj;
+   };
+ 
+</script>
+<p id="showall"></p>
+
+<!--json files transfer in javascript-->
+
+<script>
+  fetch("https://reqres.in/api/users/2", {
+
+  }).then((res) => res.JSON())
+  .then((data =>{
+    var saved = document.getElementById("showall").innerHTML =JSON.stringify(data.email)
+  }));
+  
+</script>
+
+  </body>
+</html>

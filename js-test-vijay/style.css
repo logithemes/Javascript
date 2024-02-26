@@ -1,0 +1,164 @@
+
+.main{margin: 0 auto;display: table;padding: 100px 0;text-align: center;}
+.quizz{
+    
+    margin-top: 20px;
+    
+}
+
+
+.quizz-test ul{
+    padding: 0;
+    margin: 0;
+}
+.quizz-test li{
+    list-style: none;
+    margin: 0px 20px 26px 20px;
+    display: inline-block;
+}
+.result{
+    
+    margin-top: 20px;
+}
+.result1{display: block;}
+.d-block{display: none;}
+.number-add{margin-top: 20px;}
+.number-add span{cursor: pointer;}
+
+
+.container{
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+  
+  }
+  
+  h1 {
+    text-align: center;
+    margin: 30px 0;
+  }
+  
+  
+  .slider-wrapper {
+    width: 600px;
+    height: 300px;
+    background: #000;
+    overflow: hidden;
+  }
+  
+  .inner-wrapper {
+    width: 500%;
+    height: 100%;
+    position: relative;
+    left: -100%;
+  }
+  
+  
+  .slide {
+    width: calc(100%/5);
+    height: 100%;
+    background: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    font-weight: 700;
+    float: left;
+  }
+  
+  .button {
+    width: 30px;
+    height: 30px;
+    border-top: 2px solid black;
+    position: absolute;
+    cursor: pointer;
+  
+  }
+  
+  .prev {
+    border-left: 2px solid black;
+    left: 100px;
+    transform: rotate(-45deg);
+  }
+  
+  .next {
+    border-right: 2px solid black;
+    right: 100px;
+    transform: rotate(45deg);
+  }
+
+
+  #wrapper {
+    position: relative;
+}
+#quiz {
+    position: relative;
+    height: 400px;
+    width: 400px;
+}
+#start {
+    position: absolute;
+    height: 40px;
+    width: 70px;
+    bottom: 10%;
+    right: 0%;
+    background: #0080FF;
+    color: #ffffff;
+    padding: 6px;
+    text-align: center;
+    font-size: 150%;
+    border-radius: 10px;
+}
+#start:hover {
+    cursor: pointer;
+    background: navy;
+}
+#next {
+    position: absolute;
+    height: 40px;
+    width: 60px;
+    bottom: 10%;
+    right: 0%;
+    background: #0080FF;
+    color: #ffffff;
+    text-align: center;
+    padding: 4px;
+    font-size: 200%;
+    border-radius: 10px;
+    display: none;
+}
+#next:hover {
+    cursor: pointer;
+    background: navy;
+}
+.choices {
+    display:none;
+}
+#questions {
+    font-size: 150%;
+    height: 70px;
+}
+.pickone {
+    display: inline;
+    position: relative;
+}
+#results {
+    display: none;
+    border: 1px solid black;
+    text-align: center;
+    height: 400px;
+    width: 450px;
+}
+td {
+    border: 1px solid black;
+}
+th {
+    border: 1px solid black;
+}
+#score {
+    font-size: 150%;
+    height: 70px;
+}

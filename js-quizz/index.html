@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="wrapper">
+        <div id="quiz">
+            <div id="questions">This is a quiz about Turkey, click start to begin
+                <div id="start">Start</div>
+            </div>
+            <div name="answersFrame" id="answersFrame" class="choices">
+                <input type="radio" name="answers" class="choices" value=0>
+                <p id="zero" class="pickone"></p>
+                <br/>
+                <input type="radio" name="answers" class="choices" value=1>
+                <p id="one" class="pickone"></p>
+                <br/>
+                <input type="radio" name="answers" class="choices" value=2>
+                <p id="two" class="pickone"></p>
+                <br/>
+                <input type="radio" name="answers" class="choices" value=3>
+                <p id="three" class="pickone"></p>
+
+
+            </div>
+            <div id="next">next</div>
+        </div>
+        <div id="table">
+            <div id="score"></div>
+            <table id="results">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Your Answer</th>
+                        <th>Correct Answer</th>
+                </thead>
+                <tbody>
+                    <tr class="row" name=0>
+                        <td>What is the capital of Turkey?</td>
+                        <td>
+                            <p class="userAnswer" value=0></p>
+                        </td>
+                        <td>
+                            <p class="correctAnswer" value=0></p>
+                        </td>
+                    </tr>
+                    <tr class="row" name=1>
+                        <td>When was Turkey established?</td>
+                        <td>
+                            <p class="userAnswer" value=1></p>
+                        </td>
+                        <td>
+                            <p class="correctAnswer" value=1></p>
+                        </td>
+                    </tr>
+                    <tr class="row" name=2>
+                        <td>What is the population of Turkey?</td>
+                        <td>
+                            <p class="userAnswer" value=2></p>
+                        </td>
+                        <td>
+                            <p class="correctAnswer" value=2></p>
+                        </td>
+                    </tr>
+                    <tr class="row" name=3>
+                        <td>What is the population of Turkey's biggest city, Istanbul?</td>
+                        <td>
+                            <p class="userAnswer" value=3></p>
+                        </td>
+                        <td>
+                            <p class="correctAnswer" value=3></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+    var quiz = [{
+    question: "What is the capital of Turkey?",
+    answers: ["Istanbul", "Ankara", "Izmir", "Trabzon"],
+    correctAnswer: 1
+}, {
+    question: "When was Turkey established?",
+    answers: [1923, 1928, 1933, 1934],
+    correctAnswer: 0
+}, {
+    question: "What is the population of Turkey?",
+    answers: ["90 million", "75 million", "100 million", "80 million"],
+    correctAnswer: 1
+}, {
+    question: "What is the population of Turkey's biggest city, Istanbul?",
+    answers: ["18 million", "16 million", "14 million", "7 million"],
+    correctAnswer: 2
+}]
+
+
+</script>
+
+<script>
+    var i = 0;
+var score = 0;
+
+$(document).ready(function () {
+
+   $("#start").on('click', function(){
+    $("#questions").text(quiz[i].question);
+    $("#zero").text(quiz[i].answers[0]);
+    $("#one").text(quiz[i].answers[1]);
+    $("#two").text(quiz[i].answers[2]);
+    $("#three").text(quiz[i].answers[3]);
+    $("#start").remove();
+    $("#next").show('slow');
+    $('.choices').show('slow')
+   }) ;
+
+});
+
+$(document).ready(function () {
+    $("#next").on('click',  function () {
+     var answer = $("input:checked").val();
+     var answerstring = quiz[i].answers[answer];
+    $('p[[class="userAnswer"][value = '+ i +']').text(answerstring);
+    var correctAnswer = quiz[i].correctAnswer;
+    $('p[[class="correctAnswer"][value = '+ i +']').text(quiz[i].answers[correctAnswer]);
+    if(answer == quiz[i].correctAnswer){
+        score++;
+    }
+
+    else{
+        $('tr[class="row"][name=' + i + ']').css('background', '#FE2E64');
+    }
+
+    if(!$('input').is(':checked')){
+        alert("please make a choice");
+        return undefined
+    }
+
+    i++;
+
+    if(i < 4){
+        $('.choices').css('display', 'none');
+             $('.choices').show('slow');
+             $('input').prop('checked', false);
+    }
+
+    if (i > 3) {
+
+$('#quiz').remove();
+$('#score').text("You have completed the quiz, your score is " + score);
+$('#results').fadeIn('fast');
+}
+
+    });
+});
+</script>
+</html>
